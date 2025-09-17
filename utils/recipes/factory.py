@@ -9,6 +9,7 @@ fake = Faker("pt_BR")
 
 def make_recipe():
     return {
+        "ingredients": [fake.word() for _ in range(20)],
         "id": randint(1, 1000),
         "title": fake.sentence(nb_words=6),
         "description": fake.sentence(nb_words=12),

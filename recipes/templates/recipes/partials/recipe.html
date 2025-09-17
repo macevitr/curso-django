@@ -16,11 +16,9 @@
                         <i class="fas fa-calendar-alt"></i>
                         {{ recipe.created_at|date:"d/m/Y" }} às {{ recipe.created_at|date:"H:i" }}
                     </span>
-                    <div>
                         <span class="recipe-author-item">
                             <a class="fas fa-layer-group" href="/category/{{ recipe.category.id }}/">{{ recipe.category.name }}</a>
                     </span>
-                    </div>
                 </div>
 
                 {%if is_detail_page%}
@@ -32,11 +30,11 @@
                     <p class="recipe-description">{{ recipe.description}}</p>
                 </div>
                 {%endif%}
-                 {%if recipe.ingredients %}
+                 {%if recipe.ingredients and is_detail_page %}
                 <div class="recipe-ingredients">
                     <h1 class="recipe-ingredients-title"><i class="fas fa-list"></i> Ingredientes</h1>
                     <div class="recipe-ingredients-list">
-                        {{ recipe.ingredients }}
+                        {{ recipe.ingredients | linebreaksbr}}
                     </div>
                 </div>
                 {%endif%}
@@ -58,7 +56,7 @@
 
                 {%if not is_detail_page%}
                 <footer class="recipe-footer">
-                    <a class="recipe-read-more button button-dark button-full-width" href="/recipe/3/">
+                    <a class="recipe-read-more button button-dark button-full-width" href="{% url "recipes-detail" recipe.id %}">
                         <i class="fas fa-eye"></i>
                         <span>ver mais...</span>
                     </a>
