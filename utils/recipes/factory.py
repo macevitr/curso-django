@@ -1,15 +1,15 @@
-# from inspect import signature
 from random import randint
 from faker import Faker
+from faker_food import FoodProvider
 
 
 fake = Faker("pt_BR")
-# print(signature(fake.random_number))
+fake.add_provider(FoodProvider)
 
 
 def make_recipe():
     return {
-        "ingredients": [fake.word() for _ in range(20)],
+        "ingredients": "\n" + "\n".join([fake.ingredient() for _ in range(20)]),
         "id": randint(1, 1000),
         "title": fake.sentence(nb_words=6),
         "description": fake.sentence(nb_words=12),

@@ -32,9 +32,9 @@
                 {%endif%}
                  {%if recipe.ingredients and is_detail_page %}
                 <div class="recipe-ingredients">
-                    <h1 class="recipe-ingredients-title"><i class="fas fa-list"></i> Ingredientes</h1>
+                    <h3 class="recipe-ingredients-title"><i class="fas fa-list"></i> Ingredientes</h3>
                     <div class="recipe-ingredients-list">
-                        {{ recipe.ingredients | linebreaksbr}}
+                        {{recipe.ingredients | linebreaksbr}}
                     </div>
                 </div>
                 {%endif%}
